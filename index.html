@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>AQ Accounting</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <img src="images/logo.png" alt="AQ Accounting Logo" />
+      <span class="brand-title">AQ Accounting</span>
+    </div>
+    <nav>
+      <a href="#home" class="active" id="nav-home">Početna</a>
+      <a href="#about" id="nav-about">O nama</a>
+      <a href="#services" id="nav-services">Usluge</a>
+      <a href="#contact" id="nav-contact">Kontakt</a>
+      <div class="lang-switch">
+        <button class="lang-btn active" id="to-cg">CG</button>
+        <button class="lang-btn" id="to-en">EN</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero sekcija -->
+    <section class="hero" id="home">
+      <img src="images/logo.png" alt="AQ Accounting Logo" class="hero-logo"/>
+      <h1 class="hero-title" id="hero-title">Lorem ipsum dolor sit amet</h1>
+      <div class="hero-tagline" id="hero-tagline">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+      <button class="hero-cta" id="cta-btn">Kontaktirajte nas</button>
+    </section>
+
+    <!-- Approach sekcija -->
+    <section class="approach container" id="about">
+      <h2 id="approach-title">Naš pristup</h2>
+      <div class="cards">
+        <div class="card animate-on-scroll">
+          <h3 id="approach1-title">Lorem ipsum</h3>
+          <p id="approach1-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <div class="card animate-on-scroll">
+          <h3 id="approach2-title">Suspendisse malesuada</h3>
+          <p id="approach2-text">Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.</p>
+        </div>
+        <div class="card animate-on-scroll">
+          <h3 id="approach3-title">Curabitur sagittis</h3>
+          <p id="approach3-text">Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services sekcija -->
+    <section class="services container" id="services">
+      <h2 id="services-title">Naše usluge</h2>
+      <div class="cards">
+        <div class="card animate-on-scroll">
+          <h3 id="service1-title">Usluga jedan</h3>
+          <p id="service1-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <div class="card animate-on-scroll">
+          <h3 id="service2-title">Usluga dva</h3>
+          <p id="service2-text">Phasellus non ante ac dui sagittis commodo.</p>
+        </div>
+        <div class="card animate-on-scroll">
+          <h3 id="service3-title">Usluga tri</h3>
+          <p id="service3-text">Etiam sit amet orci eget eros faucibus tincidunt.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA bar -->
+    <section class="cta-bar container animate-on-scroll">
+      <p id="cta-bar-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <button class="hero-cta" id="cta-bar-btn">Kontaktirajte nas</button>
+    </section>
+
+    <!-- Contact forma -->
+    <section class="contact container" id="contact">
+      <h2 id="contact-title">Kontakt</h2>
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Ime i prezime" required />
+        <input type="email" id="email" placeholder="Email" required />
+        <textarea rows="4" id="message" placeholder="Poruka" required></textarea>
+        <button type="submit" id="form-btn">Pošalji</button>
+        <p id="formMsg"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <nav>
+        <a href="#home" id="footer-home">Home</a> ·
+        <a href="#about" id="footer-about">About Us</a> ·
+        <a href="#services" id="footer-services">Services</a> ·
+        <a href="#contact" id="footer-contact">Contact</a>
+      </nav>
+      <p id="footer-copy">&copy; 2025 AQ Accounting</p>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>
