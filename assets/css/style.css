@@ -148,7 +148,7 @@ header .nav-container .contact-button:hover {
 .wave-3 { z-index: 7; }
 .wave-4 { z-index: 6; }
 
-}
+
 @media (max-width: 900px) {
   .waves-parallax-container { height: 140px; }
 }
