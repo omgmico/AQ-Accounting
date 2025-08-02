@@ -93,6 +93,18 @@ body {
   }
 }
 
+.grain-bg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1; /* ili 0, ali iznad mesh-bg-anim, ispod sadržaja */
+  pointer-events: none;
+  background: url('../images/noise.png') repeat;
+  opacity: 0.5; /* prilagodi po želji */
+  mix-blend-mode: multiply; /* ili overlay, soft-light, ili izbaci ako ne želiš blend */
+}
+
 /* === SECTION BACKGROUNDS === */
 .hero-section,
 .services-section,
