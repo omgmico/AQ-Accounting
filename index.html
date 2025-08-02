@@ -1,108 +1,162 @@
 <!DOCTYPE html>
-<html lang="sr">
+<html lang="cg">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AQ Accounting</title>
-  <link rel="stylesheet" href="css/styles.css" />
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+
+  <!-- Google Fonts: Poppins & Merriweather -->
+  <link href="https://fonts.googleapis.com/css2?
+    family=Poppins:wght@400;500;600;700&
+    family=Merriweather:wght@400;700&
+    display=swap" rel="stylesheet">
+
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
-  <!-- Header -->
-  <header>
-    <div class="brand">
-      <img src="images/logo.png" alt="AQ Accounting Logo" />
-      <span class="brand-title">AQ Accounting</span>
-    </div>
-    <nav>
-      <a href="#home" class="active" id="nav-home">Početna</a>
-      <a href="#about" id="nav-about">O nama</a>
-      <a href="#services" id="nav-services">Usluge</a>
-      <a href="#contact" id="nav-contact">Kontakt</a>
-      <div class="lang-switch">
-        <button class="lang-btn active" id="to-cg">CG</button>
-        <button class="lang-btn" id="to-en">EN</button>
-      </div>
+<body class="text-gray-800">
+
+  <header class="fixed inset-x-0 top-0 z-50">
+  <div class="nav-container">
+    <a href="#home" class="logo"><img src="assets/images/logo.png" alt="AQ Accounting Logo" class="h-8"></a>
+
+    <!-- Centrirana navigacija -->
+    <nav class="main-nav">
+   <a href="#home"    data-i18n-key="nav.home"    class="nav-link">Početna</a>
+   <a href="#services"data-i18n-key="nav.services"class="nav-link">Usluge</a>
+   <a href="#about"   data-i18n-key="nav.about"   class="nav-link">O nama</a>
+   <a href="#blog"    data-i18n-key="nav.blog"    class="nav-link">Blog</a>
     </nav>
-  </header>
 
-  <main>
-    <!-- Hero sekcija -->
-    <section class="hero" id="home">
-      <img src="images/logo.png" alt="AQ Accounting Logo" class="hero-logo"/>
-      <h1 class="hero-title" id="hero-title">Lorem ipsum dolor sit amet</h1>
-      <div class="hero-tagline" id="hero-tagline">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-      <button class="hero-cta" id="cta-btn">Kontaktirajte nas</button>
-    </section>
-
-    <!-- Approach sekcija -->
-    <section class="approach container" id="about">
-      <h2 id="approach-title">Naš pristup</h2>
-      <div class="cards">
-        <div class="card animate-on-scroll">
-          <h3 id="approach1-title">Lorem ipsum</h3>
-          <p id="approach1-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-        <div class="card animate-on-scroll">
-          <h3 id="approach2-title">Suspendisse malesuada</h3>
-          <p id="approach2-text">Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.</p>
-        </div>
-        <div class="card animate-on-scroll">
-          <h3 id="approach3-title">Curabitur sagittis</h3>
-          <p id="approach3-text">Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Services sekcija -->
-    <section class="services container" id="services">
-      <h2 id="services-title">Naše usluge</h2>
-      <div class="cards">
-        <div class="card animate-on-scroll">
-          <h3 id="service1-title">Usluga jedan</h3>
-          <p id="service1-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-        <div class="card animate-on-scroll">
-          <h3 id="service2-title">Usluga dva</h3>
-          <p id="service2-text">Phasellus non ante ac dui sagittis commodo.</p>
-        </div>
-        <div class="card animate-on-scroll">
-          <h3 id="service3-title">Usluga tri</h3>
-          <p id="service3-text">Etiam sit amet orci eget eros faucibus tincidunt.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA bar -->
-    <section class="cta-bar container animate-on-scroll">
-      <p id="cta-bar-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <button class="hero-cta" id="cta-bar-btn">Kontaktirajte nas</button>
-    </section>
-
-    <!-- Contact forma -->
-    <section class="contact container" id="contact">
-      <h2 id="contact-title">Kontakt</h2>
-      <form id="contactForm">
-        <input type="text" id="name" placeholder="Ime i prezime" required />
-        <input type="email" id="email" placeholder="Email" required />
-        <textarea rows="4" id="message" placeholder="Poruka" required></textarea>
-        <button type="submit" id="form-btn">Pošalji</button>
-        <p id="formMsg"></p>
-      </form>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <nav>
-        <a href="#home" id="footer-home">Home</a> ·
-        <a href="#about" id="footer-about">About Us</a> ·
-        <a href="#services" id="footer-services">Services</a> ·
-        <a href="#contact" id="footer-contact">Contact</a>
-      </nav>
-      <p id="footer-copy">&copy; 2025 AQ Accounting</p>
+    <!-- Desni blok: language switcher + CTA -->
+    <div class="right-controls">
+      <button id="lang-cg" class="lang-button">
+        <img src="assets/images/flag-cg.svg" alt="CG" class="w-6 h-4"> CG
+      </button>
+      <button id="lang-en" class="lang-button">
+        <img src="assets/images/flag-en.svg" alt="EN" class="w-6 h-4"> EN
+      </button>
+     <a href="#contact" data-i18n-key="nav.contact" class="contact-button">Kontaktirajte nas</a>
     </div>
+  </div>
+</header>
+
+
+  <!-- HERO -->
+  <section id="home" class="hero relative h-screen flex items-center justify-center text-center text-white">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative z-10 space-y-4 px-4">
+      <h1 class="text-4xl md:text-6xl font-bold fade-in" data-i18n-key="hero.title"></h1>
+      <p class="text-lg md:text-2xl fade-in" data-i18n-key="hero.subtitle"></p>
+      <a href="#contact" class="mt-6 inline-block bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded fade-in" data-i18n-key="hero.cta"></a>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+ <section id="services" class="py-20 max-w-6xl mx-auto px-4">
+  <h2 class="text-3xl font-semibold mb-12 text-center fade-in" data-i18n-key="services.title">Naše Usluge</h2>
+  <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+    <!-- Service 1 -->
+    <div class="rounded-full bg-white shadow-lg flex flex-col items-center text-center p-8 fade-in">
+      <div class="mb-4 text-blue-500">
+        <!-- Heroicon: Briefcase -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 0a2 2 0 00-2 2v2m2-4a2 2 0 012 2v2M6 8V6a6 6 0 0112 0v2M3 10v10a2 2 0 002 2h14a2 2 0 002-2V10H3zm4 6h10"/></svg>
+      </div>
+      <h3 class="text-xl font-bold mb-2" data-i18n-key="services.list.0.title">Knjigovodstvo</h3>
+      <p class="text-gray-600" data-i18n-key="services.list.0.description">Vođenje poslovnih knjiga i finansija.</p>
+    </div>
+    <!-- Service 2 -->
+    <div class="rounded-full bg-white shadow-lg flex flex-col items-center text-center p-8 fade-in">
+      <div class="mb-4 text-blue-500">
+        <!-- Heroicon: Credit Card -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></svg>
+      </div>
+      <h3 class="text-xl font-bold mb-2" data-i18n-key="services.list.1.title">Obračun plata</h3>
+      <p class="text-gray-600" data-i18n-key="services.list.1.description">Izrada platnih lista i obračun zarada.</p>
+    </div>
+    <!-- Service 3 -->
+    <div class="rounded-full bg-white shadow-lg flex flex-col items-center text-center p-8 fade-in">
+      <div class="mb-4 text-blue-500">
+        <!-- Heroicon: Currency Dollar -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 1.343-3 3s1.343 3 3 3 3-1.343 3-3m0-4V4m0 16v-4m-4 0h8"/></svg>
+      </div>
+      <h3 class="text-xl font-bold mb-2" data-i18n-key="services.list.2.title">Poresko savjetovanje</h3>
+      <p class="text-gray-600" data-i18n-key="services.list.2.description">Savjeti za optimizaciju poreza.</p>
+    </div>
+    <!-- Service 4 -->
+    <div class="rounded-full bg-white shadow-lg flex flex-col items-center text-center p-8 fade-in">
+      <div class="mb-4 text-blue-500">
+        <!-- Heroicon: Clipboard List -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-6m6 6V7M5 7h14"/></svg>
+      </div>
+      <h3 class="text-xl font-bold mb-2" data-i18n-key="services.list.3.title">Izvještaji i analize</h3>
+      <p class="text-gray-600" data-i18n-key="services.list.3.description">Izrada finansijskih izvještaja i analiza.</p>
+    </div>
+  </div>
+</section>
+
+
+  <!-- ABOUT -->
+  <section id="about" class="py-20 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 space-y-6 text-center">
+      <h2 class="text-3xl font-semibold fade-in" data-i18n-key="about.title"></h2>
+      <p class="text-gray-700 fade-in" data-i18n-key="about.content"></p>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog" class="py-20 max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-semibold mb-8 text-center fade-in" data-i18n-key="blog.title"></h2>
+    <div class="grid gap-8 md:grid-cols-3">
+      <!-- posts populated via JS -->
+      <template id="blog-post">
+        <div class="p-6 bg-white rounded-lg shadow-lg fade-in">
+          <h3 class="text-xl font-medium mb-2"></h3>
+          <p class="text-gray-600 mb-4"></p>
+          <a href="#" class="text-blue-600 hover:underline" data-i18n-key="blog.readMore"></a>
+        </div>
+      </template>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-20 bg-gray-100">
+    <div class="max-w-2xl mx-auto px-4">
+      <h2 class="text-3xl font-semibold mb-6 text-center fade-in" data-i18n-key="contact.title"></h2>
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-4 fade-in">
+        <!-- honeypot -->
+        <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off">
+
+        <div>
+          <label class="block text-sm font-medium mb-1" data-i18n-key="contact.fields.name"></label>
+          <input type="text" name="name" required class="w-full border rounded p-2">
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1" data-i18n-key="contact.fields.email"></label>
+          <input type="email" name="_replyto" required class="w-full border rounded p-2">
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1" data-i18n-key="contact.fields.phone"></label>
+          <input type="tel" name="phone" class="w-full border rounded p-2">
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1" data-i18n-key="contact.fields.message"></label>
+          <textarea name="message" rows="4" required class="w-full border rounded p-2"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded" data-i18n-key="contact.submit"></button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-6 bg-white text-center text-gray-600">
+    <p data-i18n-key="footer.address"></p>
   </footer>
-  <script src="js/main.js"></script>
+
+  <!-- Main JS -->
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
