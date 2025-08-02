@@ -1,23 +1,21 @@
 /* ================================================
-   GLOBAL: Smooth scroll i offset za sekcije
+   style.css - AQ Accounting
    ================================================ */
+
+/* === GLOBAL === */
 html {
   scroll-behavior: smooth;
-
- 
-  
 }
 section[id] {
   scroll-margin-top: 4rem;
 }
-
-
 body {
   position: relative;
   min-height: 100vh;
   background: none !important;
 }
 
+/* === ANIMATED BACKGROUND & BLOBS === */
 .mesh-bg-anim {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -29,33 +27,85 @@ body {
   opacity: 1;
   filter: blur(50px);
 }
-
-/* BLOBS */
 .bg-blob {
   position: fixed;
-  z-index: 1;
-  opacity: 0.92;
+  z-index: 0;
   pointer-events: none;
-  transition: transform 0.8s cubic-bezier(.6,1.7,.62,1.01);
+  opacity: 0.65;
+  filter: blur(50px) brightness(1.1);
+  mix-blend-mode: lighten;
+  transition: filter 0.8s cubic-bezier(.6,1.7,.62,1.01);
+  will-change: transform, filter;
+  width: 580px;
+  height: 580px;
+  max-width: none;
 }
-.blob1 { left: 3vw; top: 8vh; width: 110px;}
-.blob2 { right: 6vw; top: 30vh; width: 120px;}
-.blob3 { left: 75vw; bottom: 10vh; width: 70px;}
 
+.blob1 {
+  left: 0vw;
+  top: 0vh;
+}
+.blob2 {
+  right: -6vw;
+  top: 32vh;
+}
+.blob3 {
+  left: 60vw;
+  bottom: -10vh;
+}
+
+@media (max-width: 1000px) {
+  .bg-blob {
+    width: 320px;
+    height: 320px;
+    filter: blur(10px) brightness(1.07);
+  }
+}
+
+.bg-cursor-blob-wrap {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+#bg-cursor-blob {
+  position: absolute;
+  width: 610px;
+  height: 610px;
+  left: 50vw;
+  top: 50vh;
+  opacity: 0.46;
+  filter: blur(2000px) brightness(.99);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: filter 0.3s, opacity 0.3s;
+  z-index: 0;
+  user-select: none;
+}
+@media (max-width: 600px) {
+  #bg-cursor-blob {
+    width: 60px;
+    height: 60px;
+    filter: blur(8px) brightness(1.05);
+  }
+}
+
+/* === SECTION BACKGROUNDS === */
 .hero-section,
 .services-section,
 #about, #blog, #contact, footer {
- background: transparent !important;
-backdrop-filter: none !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
   position: relative;
   z-index: 2;
 }
 
-
-
-/* ===============================
-   HEADER & NAVBAR PILL CONTAINER
-   =============================== */
+/* ================================================
+   HEADER & NAVBAR
+   ================================================ */
 header {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -82,14 +132,10 @@ header .nav-container {
   margin: 0 auto;
   position: relative;
 }
-
-/* Logo skroz lijevo */
 header .nav-container .logo img {
   height: 2rem;
   display: block;
 }
-
-/* GLAVNA NAVIGACIJA (apsolutno centrirana) */
 header .nav-container .main-nav {
   position: absolute;
   left: 50%;
@@ -112,8 +158,6 @@ header .nav-container .main-nav a {
 header .nav-container .main-nav a:hover {
   color: #0F74BC;
 }
-
-/* JEZIČKI SWITCHER & CTA */
 header .nav-container .right-controls {
   display: flex;
   align-items: center;
@@ -151,7 +195,6 @@ header .nav-container .contact-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  
 }
 header .nav-container .contact-button:hover {
   background-color: #24A9E1;
@@ -159,10 +202,10 @@ header .nav-container .contact-button:hover {
 }
 
 /* ================================================
-   HERO & WAVE TRANSITION
+   HERO SECTION
    ================================================ */
 .hero-section {
- background: rgba(255,255,255,0.78);
+  background: rgba(255,255,255,0.78);
   backdrop-filter: blur(10px);
   padding-top: 8rem;
   padding-bottom: 8rem;
@@ -172,10 +215,6 @@ header .nav-container .contact-button:hover {
   position: relative;
   z-index: 1;
 }
-
-
-
-/* HERO content */
 .hero-inner {
   max-width: 1200px;
   width: 100%;
@@ -221,7 +260,6 @@ header .nav-container .contact-button:hover {
 }
 .hero-btn-primary {
   display: inline-block;
- 
   color: #fff;
   font-weight: 600;
   font-size: 1.15rem;
@@ -262,45 +300,9 @@ header .nav-container .contact-button:hover {
   }
 }
 
-/* SEKCIJA USLUGA: Luxury gradient + responsive grid */
-.services-section {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
- background: rgba(255,255,255,0.78);
-  backdrop-filter: blur(10px);
-  ;
-}
-
-/* Responsive GRID: 1 kolona mob, 2 tablet, 4 desktop */
-.services-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-@media (min-width: 768px) {
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (min-width: 1200px) {
-  .services-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-/* Naslov sekcije */
-.section-title {
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 3rem;
-  text-align: center;
-}
-
-/* ==== SEKCIJA USLUGA: Luxury gradient + responsive grid ==== */
+/* ================================================
+   SERVICES SECTION
+   ================================================ */
 .services-section {
   position: relative;
   padding-top: 5rem;
@@ -309,8 +311,6 @@ header .nav-container .contact-button:hover {
   backdrop-filter: blur(10px);
   z-index: 1;
 }
-
-/* Grain overlay luxury texture */
 .services-section::before {
   content: '';
   pointer-events: none;
@@ -321,8 +321,6 @@ header .nav-container .contact-button:hover {
   background: url('assets/images/noise.png') repeat;
 }
 .services-grid, .service-card { position: relative; z-index: 2; }
-
-/* Responsive GRID: 1 mob, 2 tablet, 4 desktop */
 .services-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -338,8 +336,6 @@ header .nav-container .contact-button:hover {
 @media (min-width: 1200px) {
   .services-grid { grid-template-columns: repeat(4, 1fr); }
 }
-
-/* Sekcija naslov */
 .section-title {
   font-size: 2rem;
   font-weight: 600;
@@ -355,7 +351,7 @@ header .nav-container .contact-button:hover {
   -webkit-backdrop-filter: blur(10px);
   border-radius: 1.55rem;
   box-shadow:
-    0 10px 32px 0 rgba(36, 169, 225, 0.14), /* blueish shadow, luxury look */
+    0 10px 32px 0 rgba(36, 169, 225, 0.14),
     0 2.5px 12px 0 rgba(36, 169, 225, 0.08),
     0 0.5px 2px 0 rgba(36,169,225,0.04);
   display: flex;
@@ -370,16 +366,12 @@ header .nav-container .contact-button:hover {
     box-shadow 0.28s,
     transform 0.22s cubic-bezier(.53,1.2,.44,1),
     border 0.16s;
-    position: relative;
 }
-
 .service-card:hover {
   box-shadow: 0 18px 48px 0 rgba(15,116,188,0.18), 0 6px 20px 0 rgba(36,169,225,0.09);
   transform: translateY(-6px) scale(1.045);
   border: 1.5px solid #0F74BC22;
 }
-
-/* Shine/Reflection luxury hover */
 .service-card::before {
   content: "";
   display: block;
@@ -399,30 +391,11 @@ header .nav-container .contact-button:hover {
   opacity: 1;
   left: 110%;
 }
-
-/* === Ikona: luxury pop animacija i boja na hover === */
 .icon {
   margin-bottom: 1.25rem;
   color: #0095ff;
   transition: color 0.95s, filter 0.28s;
 }
-.icon-svg {
-  width: 2.5rem;
-  height: 2.5rem;
-  display: block;
-}
-.service-card:hover {
-  color: #03aef8;
-  filter: drop-shadow(0 2px 12px #93deff55);
- 
-}
-@keyframes icon-pop {
-  0% { transform: scale(1); }
-  40% { transform: scale(1.18) rotate(-5deg);}
-  80% { transform: scale(0.97) rotate(3deg);}
-  100% { transform: scale(1); }
-}
-
 .icon-img {
   width: 2.5rem;
   height: 2.5rem;
@@ -430,10 +403,17 @@ header .nav-container .contact-button:hover {
   margin: 0 auto 1.25rem auto;
   object-fit: contain;
   transition: filter 0.25s, transform 0.20s;
-  
 }
-
-/* === Naslov kartice: gradient underline === */
+.service-card:hover {
+  color: #03aef8;
+  filter: drop-shadow(0 2px 12px #93deff55);
+}
+@keyframes icon-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.18) rotate(-5deg);}
+  80% { transform: scale(0.97) rotate(3deg);}
+  100% { transform: scale(1); }
+}
 .service-title {
   font-size: 1.25rem;
   font-weight: 700;
@@ -456,7 +436,6 @@ header .nav-container .contact-button:hover {
   margin-top: 7px;
   opacity: 0.8;
 }
-
 .service-card::after {
   content: "";
   display: block;
@@ -468,13 +447,12 @@ header .nav-container .contact-button:hover {
   backdrop-filter: blur(10px);
   opacity: 0.11;
 }
-
 .service-desc {
   color: #5b6166;
   font-size: 1rem;
 }
 
-/* Fade-in animacija za kartice */
+/* === Fade-in Animation === */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -486,25 +464,3 @@ header .nav-container .contact-button:hover {
   opacity: 1;
   transform: translateY(0);
 }
-
-
-/* ================================================
-   FADE-IN ANIMATION
-   ================================================ */
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition:
-    opacity 0.6s ease-out,
-    transform 0.6s ease-out;
-}
-.fade-in.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-
-
-
-

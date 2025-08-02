@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AQ Accounting</title>
 
-<link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
-<link rel="manifest" href="assets/favicons/site.webmanifest">
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+  <link rel="manifest" href="assets/favicons/site.webmanifest">
 
   <!-- Google Fonts: Poppins & Merriweather -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-
 
   <!-- Tailwind via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -21,78 +21,84 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="text-[#000000]">
-<div class="mesh-bg-anim"></div>
+
+  <!-- ANIMATED BACKGROUND & BLOBS -->
+  <div class="mesh-bg-anim"></div>
   <img src="assets/blobs/blob.svg" class="bg-blob blob1" alt="blob1">
   <img src="assets/blobs/blob2.svg" class="bg-blob blob2" alt="blob2">
   <img src="assets/blobs/blob3.svg" class="bg-blob blob3" alt="blob3">
+  <div class="bg-cursor-blob-wrap">
+  <img id="bg-cursor-blob" src="assets/blobs/blobcursor.svg" alt="Floating Cursor Blob">
+</div>
 
-  <header class="fixed inset-x-0 top-0 z-50">
-  <div class="nav-container">
-    <a href="#home" class="logo"><img src="assets/images/logo.png" alt="AQ Accounting Logo" class="h-8"></a>
-
-    <!-- Centrirana navigacija -->
-    <nav class="main-nav">
-   <a href="#home"    data-i18n-key="nav.home"    class="nav-link">Početna</a>
-   <a href="#services"data-i18n-key="nav.services"class="nav-link">Usluge</a>
-   <a href="#about"   data-i18n-key="nav.about"   class="nav-link">O nama</a>
-   <a href="#blog"    data-i18n-key="nav.blog"    class="nav-link">Blog</a>
-    </nav>
-
-    <!-- Desni blok: language switcher + CTA -->
-    <div class="right-controls">
-      <button id="lang-cg" class="lang-button">
-        <img src="assets/images/flag-cg.svg" alt="CG" class="w-6 h-4"> CG
-      </button>
-      <button id="lang-en" class="lang-button">
-        <img src="assets/images/flag-en.svg" alt="EN" class="w-6 h-4"> EN
-      </button>
-     <a href="#contact" data-i18n-key="nav.contact" class="contact-button">Kontaktirajte nas</a>
-    </div>
+  <!-- FLOATING BACKGROUND CURSOR BLOB (background, not overlay!) -->
+  <div class="background-blobs">
+    <img id="bg-cursor-blob" src="assets/blobs/cursor-blob.svg" alt="Floating Blob Cursor" />
   </div>
-</header>
 
-<!-- HERO SEKCIONA -->
-<section id="home" class="hero-section">
-  <div class="hero-inner">
-    <div class="hero-image">
-      <img src="assets/images/hero-placeholder.jpg" width="600" height="600" alt="Hero placeholder" class="img-rounded">
-    </div>
-    <div class="hero-content">
-      <h1 class="hero-title">
-        Concierge accounting.<br>
-        Expert business support.
-      </h1>
-      <p class="hero-desc">
-        Comprehensive accounting, tax, and consulting for small businesses in Montenegro.<br>
-        Rely on 20+ years of expertise for seamless compliance and growth.
-      </p>
-      <div class="hero-actions">
-        <a href="#contact" class="hero-btn-primary">Start now</a>
-        <a href="#services" class="hero-btn-secondary">View services</a>
+  <!-- HEADER & NAVIGATION -->
+  <header class="fixed inset-x-0 top-0 z-50">
+    <div class="nav-container">
+      <a href="#home" class="logo">
+        <img src="assets/images/logo.png" alt="AQ Accounting Logo" class="h-8">
+      </a>
+      <nav class="main-nav">
+        <a href="#home"      data-i18n-key="nav.home"    class="nav-link">Početna</a>
+        <a href="#services"  data-i18n-key="nav.services"class="nav-link">Usluge</a>
+        <a href="#about"     data-i18n-key="nav.about"   class="nav-link">O nama</a>
+        <a href="#blog"      data-i18n-key="nav.blog"    class="nav-link">Blog</a>
+      </nav>
+      <div class="right-controls">
+        <button id="lang-cg" class="lang-button">
+          <img src="assets/images/flag-cg.svg" alt="CG" class="w-6 h-4"> CG
+        </button>
+        <button id="lang-en" class="lang-button">
+          <img src="assets/images/flag-en.svg" alt="EN" class="w-6 h-4"> EN
+        </button>
+        <a href="#contact" data-i18n-key="nav.contact" class="contact-button">Kontaktirajte nas</a>
       </div>
     </div>
-  </div>
-</section>
+  </header>
 
+  <!-- HERO SECTION -->
+  <section id="home" class="hero-section">
+    <div class="hero-inner">
+      <div class="hero-image">
+        <img src="assets/images/hero-placeholder.jpg" width="600" height="600" alt="Hero placeholder" class="img-rounded">
+      </div>
+      <div class="hero-content">
+        <h1 class="hero-title">
+          Concierge accounting.<br>
+          Expert business support.
+        </h1>
+        <p class="hero-desc">
+          Comprehensive accounting, tax, and consulting for small businesses in Montenegro.<br>
+          Rely on 20+ years of expertise for seamless compliance and growth.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="hero-btn-primary">Start now</a>
+          <a href="#services" class="hero-btn-secondary">View services</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- SERVICES SECTION -->
+  <section id="services" class="services-section">
+    <h2 class="section-title fade-in pill-bg" data-i18n-key="services.title">Naše Usluge</h2>
+    <div class="services-grid"></div>
+  </section>
 
+  <!-- SERVICE CARD TEMPLATE (populated via JS) -->
+  <template id="service-card">
+    <div class="service-card fade-in">
+      <div class="icon"></div>
+      <h3 class="service-title"></h3>
+      <p class="service-desc"></p>
+    </div>
+  </template>
 
-<section id="services" class="services-section">
-  <h2 class="section-title fade-in pill-bg" data-i18n-key="services.title">Naše Usluge</h2>
-  <div class="services-grid"></div>
-</section>
-
-<template id="service-card">
-  <div class="service-card fade-in">
-    <div class="icon"></div> 
-    <h3 class="service-title"></h3>
-    <p class="service-desc"></p>
-  </div>
-</template>
-  </div>
-</section>
-
-  <!-- ABOUT -->
+  <!-- ABOUT SECTION -->
   <section id="about" class="py-20 bg-gray-50 pill-bg">
     <div class="max-w-4xl mx-auto px-4 space-y-6 text-center">
       <h2 class="text-3xl font-semibold fade-in" data-i18n-key="about.title"></h2>
@@ -100,7 +106,7 @@
     </div>
   </section>
 
-  <!-- BLOG -->
+  <!-- BLOG SECTION -->
   <section id="blog" class="py-20 max-w-6xl mx-auto px-4">
     <h2 class="text-3xl font-semibold mb-8 text-center fade-in pill-bg" data-i18n-key="blog.title"></h2>
     <div class="grid gap-8 md:grid-cols-3">
@@ -115,14 +121,13 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- CONTACT SECTION -->
   <section id="contact" class="py-20 bg-gray-100">
     <div class="max-w-2xl mx-auto px-4">
       <h2 class="text-3xl font-semibold mb-6 text-center fade-in" data-i18n-key="contact.title"></h2>
       <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-4 fade-in">
         <!-- honeypot -->
         <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off">
-
         <div>
           <label class="block text-sm font-medium mb-1" data-i18n-key="contact.fields.name"></label>
           <input type="text" name="name" required class="w-full border rounded p-2">
