@@ -108,3 +108,35 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+
+// ==== Mesh PNG lagano rotira + diše ====
+const meshBg = document.querySelector('.mesh-bg-anim');
+function animateMeshBg() {
+  const t = Date.now() / 2400;
+  const scale = 1.008 + Math.sin(t) * 0.018;
+  const rot = Math.sin(t / 2) * 1.3; // max ~1.3deg lijevo/desno
+  if(meshBg) meshBg.style.transform = `scale(${scale}) rotate(${rot}deg)`;
+  requestAnimationFrame(animateMeshBg);
+}
+animateMeshBg();
+
+// ==== Blobs plutaju ====
+function animateBlobs() {
+  document.querySelectorAll('.bg-blob').forEach((blob, i) => {
+    const t = Date.now() / 1800 + i * 66;
+    const x = Math.sin(t + i) * 16;
+    const y = Math.cos(t + 1.7 * i) * 13;
+    blob.style.transform = `translate(${x}px, ${y}px)`;
+  });
+  requestAnimationFrame(animateBlobs);
+}
+animateBlobs();
+
+// ==== Cursor-following blob ====
+document.addEventListener('mousemove', function(e) {
+  const blob = document.getElementById('cursor-blob');
+  if (!blob) return;
+  blob.style.left = e.clientX + 'px';
+  blob.style.top = e.clientY + 'px';
+});
