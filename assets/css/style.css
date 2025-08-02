@@ -3,6 +3,7 @@
    ================================================ */
 html {
   scroll-behavior: smooth;
+  
 }
 section[id] {
   scroll-margin-top: 4rem;
@@ -106,6 +107,7 @@ header .nav-container .contact-button {
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 header .nav-container .contact-button:hover {
   background-color: #24A9E1;
@@ -113,15 +115,17 @@ header .nav-container .contact-button:hover {
 }
 
 /* ================================================
-   HERO & LUXURY WAVE TRANSITION
+   HERO & WAVE TRANSITION
    ================================================ */
 .hero-section {
+  background: linear-gradient(120deg, #F5F7FA 40%, #E8F5FB 100%);
+  background: #AADEF3;
+background: linear-gradient(360deg, rgba(170, 222, 243, 1) 0%, rgba(201, 228, 240, 1) 30%, rgba(255, 255, 255, 1) 100%);
   padding-top: 8rem;
   padding-bottom: 8rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #fff;
   position: relative;
   z-index: 1;
 }
@@ -298,7 +302,8 @@ header .nav-container .contact-button:hover {
   position: relative;
   padding-top: 5rem;
   padding-bottom: 5rem;
-  background: linear-gradient(360deg, #FAF7F9 0%, #ffffff 100%);
+  background: #AADEF3;
+  background: linear-gradient(180deg,rgba(170, 222, 243, 1) 0%, rgba(201, 228, 240, 1) 70%, rgba(255, 255, 255, 1) 100%);
   z-index: 1;
 }
 
@@ -342,21 +347,29 @@ header .nav-container .contact-button:hover {
 
 /* === Luxury Service Card + Glassmorphism === */
 .service-card {
-  background: rgba(255,255,255,0.84);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-radius: 1.5rem;
-  box-shadow: 0 10px 24px 0 rgba(36, 169, 225, 0.07), 0 2px 4px 0 rgba(36, 169, 225, 0.03);
+  background: rgba(255,255,255,0.93);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 1.55rem;
+  box-shadow:
+    0 10px 32px 0 rgba(36, 169, 225, 0.14), /* blueish shadow, luxury look */
+    0 2.5px 12px 0 rgba(36, 169, 225, 0.08),
+    0 0.5px 2px 0 rgba(36,169,225,0.04);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 2.5rem 1.5rem;
-  border: 1.5px solid #e2eef766;
+  padding: 2.7rem 1.6rem;
+  border: 1.7px solid #e2eef7bb;
   position: relative;
   overflow: hidden;
-  transition: box-shadow 0.28s, transform 0.22s cubic-bezier(.53,1.2,.44,1), border 0.16s;
+  transition:
+    box-shadow 0.28s,
+    transform 0.22s cubic-bezier(.53,1.2,.44,1),
+    border 0.16s;
+    position: relative;
 }
+
 .service-card:hover {
   box-shadow: 0 18px 48px 0 rgba(15,116,188,0.18), 0 6px 20px 0 rgba(36,169,225,0.09);
   transform: translateY(-6px) scale(1.045);
@@ -386,7 +399,7 @@ header .nav-container .contact-button:hover {
 /* === Ikona: luxury pop animacija i boja na hover === */
 .icon {
   margin-bottom: 1.25rem;
-  color: #83c6f7;
+  color: #0095ff;
   transition: color 0.95s, filter 0.28s;
 }
 .icon-svg {
@@ -395,9 +408,9 @@ header .nav-container .contact-button:hover {
   display: block;
 }
 .service-card:hover {
-  color: #24A9E1;
+  color: #03aef8;
   filter: drop-shadow(0 2px 12px #93deff55);
-  animation: icon-pop 0.7s cubic-bezier(.36,1.61,.38,.98);
+ 
 }
 @keyframes icon-pop {
   0% { transform: scale(1); }
@@ -437,6 +450,17 @@ header .nav-container .contact-button:hover {
   border-radius: 2px;
   margin-top: 7px;
   opacity: 0.8;
+}
+
+.service-card::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0; left: 15%; right: 15%;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #24A9E1 0%, #0F74BC 100%);
+  opacity: 0.11;
 }
 
 .service-desc {
