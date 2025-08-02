@@ -12,20 +12,16 @@ const observer = new IntersectionObserver(
 );
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// --- Parallax effect on hero ---
-const hero = document.querySelector('.hero');
-window.addEventListener('scroll', () => {
-  const offset = window.pageYOffset;
-  hero.style.backgroundPositionY = offset * 0.5 + 'px';
-});
-
 // --- i18n: load locale files & translate ---
 const locales = {};
 let currentLang = 'cg';
+
 Promise.all([
   fetch('locales/en.json').then(r => r.json()).then(data => locales.en = data),
   fetch('locales/cg.json').then(r => r.json()).then(data => locales.cg = data)
-]).then(() => translate(currentLang));
+]).then(() => {
+  setLanguage(currentLang);
+});
 
 function translate(lang) {
   document.documentElement.lang = lang;
@@ -36,40 +32,65 @@ function translate(lang) {
   });
 }
 
-// --- Language switcher ---
-document.getElementById('lang-en').addEventListener('click', () => translate('en'));
-document.getElementById('lang-cg').addEventListener('click', () => translate('cg'));
-
-// --- Populate services & blog from JSON ---
-function populateList(templateId, containerSelector, items, mapFn) {
-  const tpl = document.getElementById(templateId);
-  const container = tpl.parentElement;
-  items.forEach(item => {
-    const clone = tpl.content.cloneNode(true);
-    mapFn(clone, item);
-    container.appendChild(clone);
-  });
-  tpl.remove();
+// --- GIF ikonice po ključu (usluga1, usluga2, usluga3, usluga4) ---
+function getServiceIcon(icon) {
+  // icon je npr. 'usluga1', 'usluga2', ...
+  return `<img src="assets/icons/${icon}.gif" alt="" class="icon-img" loading="lazy">`;
 }
-Promise.all([
-  fetch('locales/en.json').then(r => r.json()),
-  fetch('locales/cg.json').then(r => r.json())
-]).then(([en,cg]) => {
-  const data = locales[currentLang];
-  // Services
-  populateList('service-card', '.grid.md\\:grid-cols-3', data.services.list, (frag, svc) => {
-    frag.querySelector('h3').textContent = svc.title;
-    frag.querySelector('p').textContent = svc.description;
-  });
-  // Blog posts
-  populateList('blog-post', '#blog .grid', data.blog.posts, (frag, post) => {
-    frag.querySelector('h3').textContent = post.title;
-    frag.querySelector('p').textContent = post.excerpt;
-    frag.querySelector('a').setAttribute('href', post.link);
-    frag.querySelector('a').textContent = data.blog.readMore;
-  });
-});
 
+// --- RENDER SERVICES SECTION ---
+function renderServicesSection(data) {
+  const grid = document.querySelector('.services-grid');
+  const template = document.getElementById('service-card');
+  if (!grid || !template) return;
+
+  grid.innerHTML = ""; // Clean grid on each (re)render
+
+  data.services.list.forEach(service => {
+    const card = template.content.cloneNode(true);
+    card.querySelector('.icon').innerHTML = getServiceIcon(service.icon);
+    card.querySelector('.service-title').textContent = service.title;
+    card.querySelector('.service-desc').textContent = service.description;
+    grid.appendChild(card);
+  });
+
+  // Re-observiraj fade-in elemente!
+  grid.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+}
+
+// --- RENDER BLOG SECTION ---
+function renderBlogSection(data) {
+  const grid = document.querySelector('#blog .grid');
+  const template = document.getElementById('blog-post');
+  if (!grid || !template) return;
+
+  grid.innerHTML = ""; // Clean grid
+
+  data.blog.posts.forEach(post => {
+    const card = template.content.cloneNode(true);
+    card.querySelector('h3').textContent = post.title;
+    card.querySelector('p').textContent = post.excerpt;
+    card.querySelector('a').setAttribute('href', post.link);
+    card.querySelector('a').textContent = data.blog.readMore;
+    grid.appendChild(card);
+  });
+
+  grid.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+}
+
+// --- FULL LANG SWITCH: TRANSLATE + RENDER SERVICES/BLOG ---
+function setLanguage(lang) {
+  currentLang = lang;
+  const data = locales[lang];
+  translate(lang);
+  renderServicesSection(data);
+  renderBlogSection(data);
+}
+
+document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+document.getElementById('lang-cg').addEventListener('click', () => setLanguage('cg'));
+
+// --- Smooth scroll (header offset) ---
 document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('header a[href^="#"]').forEach(function(link) {
     link.addEventListener('click', function(e) {

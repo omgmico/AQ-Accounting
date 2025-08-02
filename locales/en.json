@@ -15,16 +15,24 @@
     "title": "Our Services",
     "list": [
       {
+        "icon": "usluga1",
         "title": "Bookkeeping",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
       },
       {
+        "icon": "usluga2",
         "title": "Payroll Management",
         "description": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       },
       {
+        "icon": "usluga3",
         "title": "Tax Consulting",
         "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco."
+      },
+      {
+        "icon": "usluga4",
+        "title": "Financial Reporting",
+        "description": "Preparation and analysis of financial reports for your business."
       }
     ]
   },

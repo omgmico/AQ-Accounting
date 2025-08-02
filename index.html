@@ -6,10 +6,8 @@
   <title>AQ Accounting</title>
 
   <!-- Google Fonts: Poppins & Merriweather -->
-  <link href="https://fonts.googleapis.com/css2?
-    family=Poppins:wght@400;500;600;700&
-    family=Merriweather:wght@400;700&
-    display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
 
   <!-- Tailwind via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -44,60 +42,68 @@
   </div>
 </header>
 
-
-  <!-- HERO -->
-  <section id="home" class="hero relative h-screen flex items-center justify-center text-center text-white">
-    <div class="absolute inset-0 bg-black/50"></div>
-    <div class="relative z-10 space-y-4 px-4">
-      <h1 class="text-4xl md:text-6xl font-bold fade-in" data-i18n-key="hero.title"></h1>
-      <p class="text-lg md:text-2xl fade-in" data-i18n-key="hero.subtitle"></p>
-      <a href="#contact" class="mt-6 inline-block bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded fade-in" data-i18n-key="hero.cta"></a>
+<!-- HERO SEKCIONA -->
+<section id="home" class="hero-section">
+  <div class="hero-inner">
+    <div class="hero-image">
+      <img src="assets/images/hero-placeholder.jpg" width="600" height="600" alt="Hero placeholder" class="img-rounded">
     </div>
-  </section>
-
-  <!-- SERVICES -->
- <section id="services" class="py-20 max-w-6xl mx-auto px-4">
-  <h2 class="text-3xl font-semibold mb-12 text-center fade-in" data-i18n-key="services.title">Naše Usluge</h2>
-  <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-    <!-- Service 1 -->
-    <div class="rounded-full bg-white shadow-lg flex flex-col items-center text-center p-8 fade-in">
-      <div class="mb-4 text-blue-500">
-        <!-- Heroicon: Briefcase -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 0a2 2 0 00-2 2v2m2-4a2 2 0 012 2v2M6 8V6a6 6 0 0112 0v2M3 10v10a2 2 0 002 2h14a2 2 0 002-2V10H3zm4 6h10"/></svg>
+    <div class="hero-content">
+      <h1 class="hero-title">
+        Concierge accounting.<br>
+        Expert business support.
+      </h1>
+      <p class="hero-desc">
+        Comprehensive accounting, tax, and consulting for small businesses in Montenegro.<br>
+        Rely on 20+ years of expertise for seamless compliance and growth.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="hero-btn-primary">Start now</a>
+        <a href="#services" class="hero-btn-secondary">View services</a>
       </div>
-      <h3 class="text-xl font-bold mb-2" data-i18n-key="services.list.0.title">Knjigovodstvo</h3>
-      <p class="text-gray-600" data-i18n-key="services.list.0.description">Vođenje poslovnih knjiga i finansija.</p>
-    </div>
-    <!-- Service 2 -->
-    <div class="rounded-full bg-white shadow-lg flex flex-col items-center text-center p-8 fade-in">
-      <div class="mb-4 text-blue-500">
-        <!-- Heroicon: Credit Card -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></svg>
-      </div>
-      <h3 class="text-xl font-bold mb-2" data-i18n-key="services.list.1.title">Obračun plata</h3>
-      <p class="text-gray-600" data-i18n-key="services.list.1.description">Izrada platnih lista i obračun zarada.</p>
-    </div>
-    <!-- Service 3 -->
-    <div class="rounded-full bg-white shadow-lg flex flex-col items-center text-center p-8 fade-in">
-      <div class="mb-4 text-blue-500">
-        <!-- Heroicon: Currency Dollar -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 1.343-3 3s1.343 3 3 3 3-1.343 3-3m0-4V4m0 16v-4m-4 0h8"/></svg>
-      </div>
-      <h3 class="text-xl font-bold mb-2" data-i18n-key="services.list.2.title">Poresko savjetovanje</h3>
-      <p class="text-gray-600" data-i18n-key="services.list.2.description">Savjeti za optimizaciju poreza.</p>
-    </div>
-    <!-- Service 4 -->
-    <div class="rounded-full bg-white shadow-lg flex flex-col items-center text-center p-8 fade-in">
-      <div class="mb-4 text-blue-500">
-        <!-- Heroicon: Clipboard List -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-6m6 6V7M5 7h14"/></svg>
-      </div>
-      <h3 class="text-xl font-bold mb-2" data-i18n-key="services.list.3.title">Izvještaji i analize</h3>
-      <p class="text-gray-600" data-i18n-key="services.list.3.description">Izrada finansijskih izvještaja i analiza.</p>
     </div>
   </div>
 </section>
 
+<!-- FIXED MULTI-LAYER LUXURY WAVES (bez parallax) -->
+<div class="waves-static-container">
+  <!-- Sky Blue -->
+  <svg class="wave-static" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,120 Q500,240 1100,120 T1440,170 V320H0Z"
+      fill="#24A9E1" fill-opacity="0.39"/>
+  </svg>
+  <!-- Blue -->
+  <svg class="wave-static" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,170 Q480,270 900,150 T1440,130 V320H0Z"
+      fill="#0F74BC" fill-opacity="0.26"/>
+  </svg>
+  <!-- Off-White -->
+  <svg class="wave-static" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,180 Q600,240 1150,200 T1440,210 V320H0Z"
+      fill="#F5F7FA" fill-opacity="0.94"/>
+  </svg>
+  <!-- White + blur -->
+  <svg class="wave-static" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,210 Q520,290 1080,230 T1440,210 V320H0Z"
+      fill="#FFFFFF" fill-opacity="0.99"/>
+  </svg>
+</div>
+
+
+<section id="services" class="services-section">
+  <h2 class="section-title fade-in" data-i18n-key="services.title">Naše Usluge</h2>
+  <div class="services-grid"></div>
+</section>
+
+<template id="service-card">
+  <div class="service-card fade-in">
+    <div class="icon"></div> 
+    <h3 class="service-title"></h3>
+    <p class="service-desc"></p>
+  </div>
+</template>
+  </div>
+</section>
 
   <!-- ABOUT -->
   <section id="about" class="py-20 bg-gray-50">

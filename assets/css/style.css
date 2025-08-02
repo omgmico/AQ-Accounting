@@ -44,9 +44,7 @@ header .nav-container .logo img {
   display: block;
 }
 
-/* ====================================
-   GLAVNA NAVIGACIJA (apsolutno centrirana)
-   ==================================== */
+/* GLAVNA NAVIGACIJA (apsolutno centrirana) */
 header .nav-container .main-nav {
   position: absolute;
   left: 50%;
@@ -58,7 +56,6 @@ header .nav-container .main-nav {
   gap: 2.1rem;
   z-index: 1;
 }
-
 header .nav-container .main-nav a {
   color: #232629;
   font-weight: 500;
@@ -71,23 +68,20 @@ header .nav-container .main-nav a:hover {
   color: #0F74BC;
 }
 
-/* =======================================
-   JEZIČKI SWITCHER & CTA (desno unutar pill)
-   ======================================= */
+/* JEZIČKI SWITCHER & CTA */
 header .nav-container .right-controls {
   display: flex;
   align-items: center;
-  gap: 0.15rem;      /* manji razmak između CG/EN i dugmeta */
+  gap: 0.15rem;
   margin-left: auto;
-  min-width: 200px;  /* osigurava da dugme ne "gura" centar */
+  min-width: 200px;
 }
-
 header .nav-container .lang-button {
   background: none;
   border: none;
   display: flex;
   align-items: center;
-  gap: 0.10rem;     /* još manji razmak između zastave i teksta */
+  gap: 0.10rem;
   font-size: 0.95rem;
   color: #232629;
   font-family: "Poppins", Arial, sans-serif;
@@ -98,7 +92,6 @@ header .nav-container .lang-button {
 header .nav-container .lang-button:hover {
   color: #0F74BC;
 }
-
 header .nav-container .contact-button {
   background-color: #0F74BC;
   color: #FFFFFF;
@@ -120,15 +113,350 @@ header .nav-container .contact-button:hover {
 }
 
 /* ================================================
-   PARALLAX HERO
+   HERO & LUXURY WAVE TRANSITION
    ================================================ */
-.hero {
-  background-image: url('../images/hero-placeholder.jpg');
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+.hero-section {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  position: relative;
+  z-index: 1;
 }
+
+/* ==== MULTI-LAYER WAVES + PARALLAX */
+.waves-parallax-container {
+  width: 100%;
+  min-height: 160px;
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.3s cubic-bezier(.56,1.55,.31,.88), transform 1.3s cubic-bezier(.56,1.55,.31,.88);
+}
+.waves-parallax {
+  pointer-events: none;
+  user-select: none;
+  transition: filter 0.3s;
+  z-index: 4;
+  will-change: transform;
+}
+.wave-1 { z-index: 9; }
+.wave-2 { z-index: 8; }
+.wave-3 { z-index: 7; }
+.wave-4 { z-index: 6; }
+
+}
+@media (max-width: 900px) {
+  .waves-parallax-container { height: 140px; }
+}
+@media (max-width: 600px) {
+  .waves-parallax-container { height: 70px; }
+}
+/* FADE-IN ANIMACIJA za talase */
+.fade-in-waves {
+  opacity: 0;
+  transform: translateY(44px);
+  transition: opacity 1.35s cubic-bezier(.66,1.43,.36,1), transform 1.4s cubic-bezier(.59,1.31,.43,1.04);
+}
+.fade-in-waves.show {
+  opacity: 1 !important;
+  transform: translateY(0);
+}
+
+/* HERO content */
+.hero-inner {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+  justify-content: center;
+}
+.hero-image {
+  flex: 1 1 0%;
+  display: flex;
+  justify-content: center;
+}
+.img-rounded {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 2rem;
+  box-shadow: 0 10px 40px 0 rgba(15,116,188,0.10);
+  object-fit: cover;
+}
+.hero-content {
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+}
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  font-family: 'Poppins', Arial, sans-serif;
+  color: #232629;
+  line-height: 1.1;
+}
+.hero-desc {
+  font-size: 1.18rem;
+  color: #60636b;
+  font-family: 'Merriweather', serif;
+  margin-top: -1rem;
+}
+.hero-actions {
+  display: flex;
+  gap: 1.5rem;
+}
+.hero-btn-primary {
+  display: inline-block;
+  background: #0F74BC;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.15rem;
+  border-radius: 2rem;
+  padding: 0.85rem 2.3rem;
+  transition: background 0.18s;
+  box-shadow: 0 4px 18px 0 rgba(36,169,225,0.11);
+  text-decoration: none;
+}
+.hero-btn-primary:hover {
+  background: #24A9E1;
+}
+.hero-btn-secondary {
+  display: inline-block;
+  border: 1.5px solid #d5dbe6;
+  background: #fff;
+  color: #232629;
+  font-weight: 500;
+  font-size: 1.13rem;
+  border-radius: 2rem;
+  padding: 0.85rem 2.2rem;
+  transition: border-color 0.15s, color 0.15s;
+  text-decoration: none;
+}
+.hero-btn-secondary:hover {
+  border-color: #0F74BC;
+  color: #0F74BC;
+}
+@media (max-width: 1024px) {
+  .hero-inner {
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+    text-align: center;
+  }
+  .hero-content {
+    align-items: center;
+  }
+}
+
+/* SEKCIJA USLUGA: Luxury gradient + responsive grid */
+.services-section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background: linear-gradient(
+    360deg,
+    #FAF7F9 0%,
+    #ffffff 100%
+  );
+}
+
+/* Responsive GRID: 1 kolona mob, 2 tablet, 4 desktop */
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 768px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1200px) {
+  .services-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Naslov sekcije */
+.section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+/* ==== SEKCIJA USLUGA: Luxury gradient + responsive grid ==== */
+.services-section {
+  position: relative;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background: linear-gradient(360deg, #FAF7F9 0%, #ffffff 100%);
+  z-index: 1;
+}
+
+/* Grain overlay luxury texture */
+.services-section::before {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  left:0;top:0;right:0;bottom:0;
+  z-index: 0;
+  opacity: 0.10;
+  background: url('https://assets-global.website-files.com/6405ccbf928b6f10a9db5060/6405ccbf928b6fd08fdb5068_noise-light.png') repeat;
+}
+.services-grid, .service-card { position: relative; z-index: 2; }
+
+/* Responsive GRID: 1 mob, 2 tablet, 4 desktop */
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 768px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1200px) {
+  .services-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Sekcija naslov */
+.section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+/* === Luxury Service Card + Glassmorphism === */
+.service-card {
+  background: rgba(255,255,255,0.84);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 24px 0 rgba(36, 169, 225, 0.07), 0 2px 4px 0 rgba(36, 169, 225, 0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  border: 1.5px solid #e2eef766;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.28s, transform 0.22s cubic-bezier(.53,1.2,.44,1), border 0.16s;
+}
+.service-card:hover {
+  box-shadow: 0 18px 48px 0 rgba(15,116,188,0.18), 0 6px 20px 0 rgba(36,169,225,0.09);
+  transform: translateY(-6px) scale(1.045);
+  border: 1.5px solid #0F74BC22;
+}
+
+/* Shine/Reflection luxury hover */
+.service-card::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: -75%;
+  top: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent 0%, #00b3ff16 60%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.1s, left 1s cubic-bezier(.46,1.6,.38,1);
+  pointer-events: none;
+  z-index: 3;
+}
+.service-card:hover::before {
+  opacity: 1;
+  left: 110%;
+}
+
+/* === Ikona: luxury pop animacija i boja na hover === */
+.icon {
+  margin-bottom: 1.25rem;
+  color: #83c6f7;
+  transition: color 0.95s, filter 0.28s;
+}
+.icon-svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: block;
+}
+.service-card:hover {
+  color: #24A9E1;
+  filter: drop-shadow(0 2px 12px #93deff55);
+  animation: icon-pop 0.7s cubic-bezier(.36,1.61,.38,.98);
+}
+@keyframes icon-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.18) rotate(-5deg);}
+  80% { transform: scale(0.97) rotate(3deg);}
+  100% { transform: scale(1); }
+}
+
+.icon-img {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: block;
+  margin: 0 auto 1.25rem auto;
+  object-fit: contain;
+  transition: filter 0.25s, transform 0.20s;
+  
+}
+
+/* === Naslov kartice: gradient underline === */
+.service-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #232629;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.3em;
+  letter-spacing: -0.01em;
+}
+.service-title::after {
+  content: '';
+  display: block;
+  width: 45%;
+  height: 3px;
+  margin: 0 auto;
+  background: linear-gradient(90deg, #0F74BC 5%, #93DEFF 100%);
+  border-radius: 2px;
+  margin-top: 7px;
+  opacity: 0.8;
+}
+
+.service-desc {
+  color: #5b6166;
+  font-size: 1rem;
+}
+
+/* Fade-in animacija za kartice */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.6s cubic-bezier(.45,1.45,.44,1),
+    transform 0.6s cubic-bezier(.45,1.45,.44,1);
+}
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 /* ================================================
    FADE-IN ANIMATION
@@ -144,3 +472,28 @@ header .nav-container .contact-button:hover {
   opacity: 1;
   transform: translateY(0);
 }
+
+.waves-static-container {
+  position: relative;
+  width: 100vw;
+  min-width: 100%;
+  height: 200px;
+  overflow: hidden;
+  z-index: 3;
+  margin-top: -2px;
+}
+@media (min-width: 768px) { .waves-static-container { height: 330px; } }
+@media (min-width: 1200px) { .waves-static-container { height: 410px; } }
+
+.wave-static {
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+.wave-static:nth-child(1) { z-index: 4; }
+.wave-static:nth-child(2) { z-index: 5; }
+.wave-static:nth-child(3) { z-index: 6; }
+.wave-static:nth-child(4) { z-index: 7; }

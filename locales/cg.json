@@ -15,16 +15,24 @@
     "title": "Naše Usluge",
     "list": [
       {
+        "icon": "usluga1",
         "title": "Vođenje knjiga",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
       },
       {
+        "icon": "usluga2",
         "title": "Obračun plata",
         "description": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       },
       {
+        "icon": "usluga3",
         "title": "Poreško savetovanje",
         "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco."
+      },
+      {
+        "icon": "usluga4",
+        "title": "Finansijski izvještaji",
+        "description": "Priprema i analiza finansijskih izvještaja za vaše poslovanje."
       }
     ]
   },
