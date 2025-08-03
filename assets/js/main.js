@@ -1,3 +1,88 @@
+// ==== Word-by-Word Typing Animation ====
+function typeWord(element, text, speed = 100) {
+  return new Promise(resolve => {
+    let i = 0;
+    element.textContent = '';
+    element.classList.add('active');
+    
+    function type() {
+      if (i < text.length) {
+        element.textContent += text.charAt(i);
+        i++;
+        setTimeout(type, speed);
+      } else {
+        element.classList.remove('active');
+        element.classList.add('complete');
+        resolve();
+      }
+    }
+    type();
+  });
+}
+
+// ==== Hero Typing Animation & Smooth Scroll on Page Load ====
+document.addEventListener('DOMContentLoaded', async function() {
+  // Get all word elements
+  const wordConcierge = document.getElementById('word-concierge');
+  const wordAccounting = document.getElementById('word-accounting');
+  const wordExpert = document.getElementById('word-expert');
+  const wordBusiness = document.getElementById('word-business');
+  const wordSupport = document.getElementById('word-support');
+  const heroDescription = document.getElementById('hero-description');
+  const typingContainer = document.querySelector('.typing-container');
+  
+  if (wordConcierge && typingContainer) {
+    // First, set all words to reserve space
+    wordConcierge.textContent = 'Concierge';
+    wordAccounting.textContent = 'accounting.';
+    wordExpert.textContent = 'Expert';
+    wordBusiness.textContent = 'business';
+    wordSupport.textContent = 'support.';
+    
+    // Measure and fix container height
+    const neededHeight = typingContainer.offsetHeight;
+    typingContainer.style.height = neededHeight + 'px';
+    
+    // Clear all words and start typing animation
+    wordConcierge.textContent = '';
+    wordAccounting.textContent = '';
+    wordExpert.textContent = '';
+    wordBusiness.textContent = '';
+    wordSupport.textContent = '';
+    
+    // Type each word in sequence
+    await typeWord(wordConcierge, 'Concierge', 80);
+    await typeWord(wordAccounting, 'accounting.', 80);
+    await typeWord(wordExpert, 'Expert', 80);
+    await typeWord(wordBusiness, 'business', 80);
+    await typeWord(wordSupport, 'support.', 80);
+    
+    // Show the description with fade-in after all words are typed
+    setTimeout(() => {
+      if (heroDescription) {
+        heroDescription.classList.add('show');
+      }
+    }, 500);
+  }
+
+  // Smooth scroll: Header offset
+  document.querySelectorAll('header a[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      const href = link.getAttribute('href');
+      if (href && href.length > 1) {
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          const header = document.querySelector('header');
+          const headerHeight = header ? header.offsetHeight : 0;
+          const y = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }
+    });
+  });
+});
+
 // ==== Intersection Observer: Fade-in animacija ====
 const observer = new IntersectionObserver(
   entries => {
@@ -86,32 +171,27 @@ function setLanguage(lang) {
 document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
 document.getElementById('lang-cg').addEventListener('click', () => setLanguage('cg'));
 
-// ==== Smooth scroll: Header offset ====
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('header a[href^="#"]').forEach(function(link) {
-    link.addEventListener('click', function(e) {
-      const href = link.getAttribute('href');
-      if (href && href.length > 1) {
-        const target = document.querySelector(href);
-        if (target) {
-          e.preventDefault();
-          const header = document.querySelector('header');
-          const headerHeight = header ? header.offsetHeight : 0;
-          const y = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-          window.scrollTo({ top: y, behavior: 'smooth' });
-        }
-      }
-    });
-  });
-});
-
 // ==== Mesh BG animacija ====
 const meshBg = document.querySelector('.mesh-bg-anim');
 function animateMeshBg() {
-  const t = Date.now() / 2400;
-  const scale = 1.008 + Math.sin(t) * 0.018;
-  const rot = Math.sin(t / 2) * 1.3;
-  if (meshBg) meshBg.style.transform = `scale(${scale}) rotate(${rot}deg)`;
+  const t = Date.now() / 8000; // Sporija animacija za smooth efekat
+  
+  // Kombinacija rotacije, skaliranja i pozicioniranja
+  const rotation = Math.sin(t) * 15 + Math.cos(t * 0.7) * 8; // Veća rotacija
+  const scale = 1.05 + Math.sin(t * 1.2) * 0.03 + Math.cos(t * 0.8) * 0.02; // Dinamičko skaliranje
+  
+  // Dodaj subtle pomeranje pozicije za "plutajući" efekat
+  const translateX = Math.sin(t * 0.6) * 2;
+  const translateY = Math.cos(t * 0.5) * 1.5;
+  
+  // Animacija opacity-ja za "breathing" efekat
+  const opacity = 0.6 + Math.sin(t * 1.5) * 0.15;
+  
+  if (meshBg) {
+    meshBg.style.transform = `translate(${translateX}%, ${translateY}%) scale(${scale}) rotate(${rotation}deg)`;
+    meshBg.style.opacity = opacity;
+  }
+  
   requestAnimationFrame(animateMeshBg);
 }
 animateMeshBg();

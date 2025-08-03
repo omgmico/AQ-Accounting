@@ -14,10 +14,7 @@
   <!-- Google Fonts: Poppins & Merriweather -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- Tailwind via CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Custom styles -->
+  <!-- Compiled Tailwind CSS with custom styles -->
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="text-[#000000]">
@@ -39,10 +36,11 @@
   </div>
 
   <!-- HEADER & NAVIGATION -->
-  <header class="fixed inset-x-0 top-0 z-50">
+  <header class="fixed inset-x-0 top-0 z-50 pt-4">
     <div class="nav-container">
-      <a href="#home" class="logo">
+      <a href="#home" class="logo-with-text">
         <img src="assets/images/logo.png" alt="AQ Accounting Logo" class="h-8">
+        <span class="logo-text">AQ Accounting.</span>
       </a>
       <nav class="main-nav">
         <a href="#home"      data-i18n-key="nav.home"    class="nav-link">Početna</a>
@@ -64,22 +62,37 @@
 
   <!-- HERO SECTION -->
   <section id="home" class="hero-section">
-    <div class="hero-inner">
-      <div class="hero-image">
-        <img src="assets/images/hero-placeholder.jpg" width="600" height="600" alt="Hero placeholder" class="img-rounded">
-      </div>
-      <div class="hero-content">
-        <h1 class="hero-title">
-          Concierge accounting.<br>
-          Expert business support.
-        </h1>
-        <p class="hero-desc">
-          Comprehensive accounting, tax, and consulting for small businesses in Montenegro.<br>
-          Rely on 20+ years of expertise for seamless compliance and growth.
-        </p>
-        <div class="hero-actions">
-          <a href="#contact" class="hero-btn-primary">Start now</a>
-          <a href="#services" class="hero-btn-secondary">View services</a>
+    <div class="hero-glass-container">
+      <div class="hero-inner">
+        <div class="hero-image">
+          <img src="assets/images/hero-placeholder.jpg" width="600" height="600" alt="Hero placeholder" class="img-rounded">
+        </div>
+        <div class="hero-content">
+          <div class="typing-container">
+            <h1 class="hero-title">
+              <span class="typing-line">
+                <span id="word-concierge" class="typing-word"></span>
+              </span>
+              <span class="typing-line">
+                <span id="word-accounting" class="typing-word"></span>
+              </span>
+              <span class="typing-line">
+                <span id="word-expert" class="typing-word"></span>
+                <span id="word-business" class="typing-word"></span>
+              </span>
+              <span class="typing-line">
+                <span id="word-support" class="typing-word"></span>
+              </span>
+            </h1>
+          </div>
+          <p id="hero-description" class="hero-desc hero-desc-delayed">
+            Comprehensive accounting, tax, and consulting for small businesses in Montenegro.<br>
+            Rely on 20+ years of expertise for seamless compliance and growth.
+          </p>
+          <div class="hero-actions">
+            <a href="#contact" class="hero-btn-primary">Start now</a>
+            <a href="#services" class="hero-btn-secondary">View services</a>
+          </div>
         </div>
       </div>
     </div>
@@ -87,8 +100,12 @@
 
   <!-- SERVICES SECTION -->
   <section id="services" class="services-section">
-    <h2 class="section-title fade-in pill-bg" data-i18n-key="services.title">Naše Usluge</h2>
-    <div class="services-grid"></div>
+    <div class="services-glass-container">
+      <div class="text-center">
+        <h2 class="section-title fade-in" data-i18n-key="services.title">Naše Usluge</h2>
+      </div>
+      <div class="services-grid"></div>
+    </div>
   </section>
 
   <!-- SERVICE CARD TEMPLATE (populated via JS) -->
@@ -101,58 +118,140 @@
   </template>
 
   <!-- ABOUT SECTION -->
-  <section id="about" class="py-20 bg-gray-50 pill-bg">
-    <div class="max-w-4xl mx-auto px-4 space-y-6 text-center">
-      <h2 class="text-3xl font-semibold fade-in" data-i18n-key="about.title"></h2>
-      <p class="text-gray-700 fade-in" data-i18n-key="about.content"></p>
+  <section id="about" class="about-section">
+    <div class="about-glass-container">
+      <div class="text-center space-y-8">
+        <h2 class="text-3xl font-semibold fade-in" data-i18n-key="about.title"></h2>
+        
+        <div class="grid md:grid-cols-2 gap-12 items-center w-full">
+          <!-- About Text -->
+          <div class="fade-in space-y-4">
+            <p class="text-gray-700 text-lg leading-relaxed" data-i18n-key="about.content"></p>
+            <p class="text-gray-600" data-i18n-key="about.mission">Naša misija je da pružimo vrhunske računovodstvene usluge koje omogućavaju našim klijentima da se fokusiraju na ono što najbolje rade - razvoj svojih poslova.</p>
+          </div>
+          
+          <!-- About Stats/Features -->
+          <div class="fade-in">
+            <div class="grid grid-cols-2 gap-6">
+              <div class="text-center p-4 bg-white bg-opacity-50 rounded-xl">
+                <div class="text-2xl font-bold text-primary-500 mb-2">10+</div>
+                <div class="text-sm text-gray-600" data-i18n-key="about.stats.experience">Godina iskustva</div>
+              </div>
+              <div class="text-center p-4 bg-white bg-opacity-50 rounded-xl">
+                <div class="text-2xl font-bold text-primary-500 mb-2">100+</div>
+                <div class="text-sm text-gray-600" data-i18n-key="about.stats.clients">Zadovoljnih klijenata</div>
+              </div>
+              <div class="text-center p-4 bg-white bg-opacity-50 rounded-xl">
+                <div class="text-2xl font-bold text-primary-500 mb-2">24/7</div>
+                <div class="text-sm text-gray-600" data-i18n-key="about.stats.support">Podrška</div>
+              </div>
+              <div class="text-center p-4 bg-white bg-opacity-50 rounded-xl">
+                <div class="text-2xl font-bold text-primary-500 mb-2">100%</div>
+                <div class="text-sm text-gray-600" data-i18n-key="about.stats.accuracy">Tačnost</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- BLOG SECTION -->
-  <section id="blog" class="py-20 max-w-6xl mx-auto px-4">
-    <h2 class="text-3xl font-semibold mb-8 text-center fade-in pill-bg" data-i18n-key="blog.title"></h2>
-    <div class="grid gap-8 md:grid-cols-3">
-      <!-- posts populated via JS -->
-      <template id="blog-post">
-        <div class="p-6 bg-white rounded-lg shadow-lg fade-in">
-          <h3 class="text-xl font-medium mb-2"></h3>
-          <p class="text-gray-600 mb-4"></p>
-          <a href="#" class="text-blue-600 hover:underline" data-i18n-key="blog.readMore"></a>
-        </div>
-      </template>
+  <section id="blog" class="blog-section">
+    <div class="blog-glass-container">
+      <div class="text-center">
+        <h2 class="text-3xl font-semibold mb-8 fade-in" data-i18n-key="blog.title"></h2>
+        <div class="grid gap-8 md:grid-cols-3">
+        <!-- posts populated via JS -->
+        <template id="blog-post">
+          <div class="p-6 bg-white rounded-lg shadow-lg fade-in">
+            <h3 class="text-xl font-medium mb-2"></h3>
+            <p class="text-gray-600 mb-4"></p>
+            <a href="#" class="text-blue-600 hover:underline" data-i18n-key="blog.readMore"></a>
+          </div>
+        </template>
+      </div>
     </div>
   </section>
 
   <!-- CONTACT SECTION -->
-  <section id="contact" class="py-20 bg-gray-100">
-    <div class="max-w-2xl mx-auto px-4">
-      <h2 class="text-3xl font-semibold mb-6 text-center fade-in" data-i18n-key="contact.title"></h2>
-      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-4 fade-in">
-        <!-- honeypot -->
-        <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off">
-        <div>
-          <label class="block text-sm font-medium mb-1" data-i18n-key="contact.fields.name"></label>
-          <input type="text" name="name" required class="w-full border rounded p-2">
+  <section id="contact" class="contact-section">
+    <div class="contact-glass-container">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-semibold mb-6 fade-in" data-i18n-key="contact.title"></h2>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-12 w-full">
+        <!-- Contact Form -->
+        <div class="fade-in">
+          <h3 class="text-xl font-semibold mb-4 frosted-subtitle" data-i18n-key="contact.formTitle">Pošaljite nam poruku</h3>
+          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-4">
+            <!-- honeypot -->
+            <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off">
+            <div>
+              <label class="block text-sm font-medium mb-1" data-i18n-key="contact.fields.name"></label>
+              <input type="text" name="name" required class="w-full border rounded p-3">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1" data-i18n-key="contact.fields.email"></label>
+              <input type="email" name="_replyto" required class="w-full border rounded p-3">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1" data-i18n-key="contact.fields.phone"></label>
+              <input type="tel" name="phone" class="w-full border rounded p-3">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1" data-i18n-key="contact.fields.message"></label>
+              <textarea name="message" rows="4" required class="w-full border rounded p-3"></textarea>
+            </div>
+            <button type="submit" class="submit-btn-frosted" data-i18n-key="contact.submit"></button>
+          </form>
         </div>
-        <div>
-          <label class="block text-sm font-medium mb-1" data-i18n-key="contact.fields.email"></label>
-          <input type="email" name="_replyto" required class="w-full border rounded p-2">
+        
+        <!-- Contact Information -->
+        <div class="fade-in">
+          <h3 class="text-xl font-semibold mb-4 frosted-subtitle" data-i18n-key="contact.infoTitle">Kontakt informacije</h3>
+          <div class="space-y-6">
+            <div class="flex items-start space-x-4">
+              <div class="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center text-white text-sm">📍</div>
+              <div>
+                <h4 class="font-semibold mb-1" data-i18n-key="contact.info.address.title">Adresa</h4>
+                <p class="text-gray-600" data-i18n-key="contact.info.address.value">Bulevar Džordža Vašingtona 98, Podgorica</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4">
+              <div class="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center text-white text-sm">📞</div>
+              <div>
+                <h4 class="font-semibold mb-1" data-i18n-key="contact.info.phone.title">Telefon</h4>
+                <p class="text-gray-600" data-i18n-key="contact.info.phone.value">+382 20 123 456</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4">
+              <div class="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center text-white text-sm">✉️</div>
+              <div>
+                <h4 class="font-semibold mb-1" data-i18n-key="contact.info.email.title">Email</h4>
+                <p class="text-gray-600" data-i18n-key="contact.info.email.value">info@aq-accounting.me</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4">
+              <div class="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center text-white text-sm">🕒</div>
+              <div>
+                <h4 class="font-semibold mb-1" data-i18n-key="contact.info.hours.title">Radno vreme</h4>
+                <p class="text-gray-600" data-i18n-key="contact.info.hours.value">Pon - Pet: 08:00 - 16:00</p>
+                <p class="text-gray-600 text-sm" data-i18n-key="contact.info.hours.weekend">Vikend: Po dogovoru</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
-          <label class="block text-sm font-medium mb-1" data-i18n-key="contact.fields.phone"></label>
-          <input type="tel" name="phone" class="w-full border rounded p-2">
-        </div>
-        <div>
-          <label class="block text-sm font-medium mb-1" data-i18n-key="contact.fields.message"></label>
-          <textarea name="message" rows="4" required class="w-full border rounded p-2"></textarea>
-        </div>
-        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded" data-i18n-key="contact.submit"></button>
-      </form>
+      </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="py-6 bg-white text-center text-gray-600">
+  <footer class="py-6 bg-glass text-center text-gray-600">
     <p data-i18n-key="footer.address"></p>
   </footer>
 

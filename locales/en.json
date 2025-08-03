@@ -4,7 +4,7 @@
     "services": "Services",
     "about": "About",
     "blog": "Blog",
-    "contact": "Contact Us"
+    "contact": "Contact"
   },
   "hero": {
     "title": "Welcome to AQ Accounting",
@@ -38,7 +38,14 @@
   },
   "about": {
     "title": "About Us",
-    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum."
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.",
+    "mission": "Our mission is to provide top-quality accounting services that allow our clients to focus on what they do best - growing their businesses.",
+    "stats": {
+      "experience": "Years of experience",
+      "clients": "Satisfied clients",
+      "support": "Support",
+      "accuracy": "Accuracy"
+    }
   },
   "blog": {
     "title": "Latest Posts",
@@ -63,13 +70,34 @@
   },
   "contact": {
     "title": "Contact Us",
+    "formTitle": "Send us a message",
+    "infoTitle": "Contact information",
     "fields": {
       "name": "Name",
       "email": "Email",
       "phone": "Phone (optional)",
       "message": "Message"
     },
-    "submit": "Send Message"
+    "submit": "Send Message",
+    "info": {
+      "address": {
+        "title": "Address",
+        "value": "Bulevar Džordža Vašingtona 98, Podgorica"
+      },
+      "phone": {
+        "title": "Phone",
+        "value": "+382 20 123 456"
+      },
+      "email": {
+        "title": "Email",
+        "value": "info@aq-accounting.me"
+      },
+      "hours": {
+        "title": "Working hours",
+        "value": "Mon - Fri: 08:00 - 16:00",
+        "weekend": "Weekend: By appointment"
+      }
+    }
   },
   "footer": {
     "address": "Vuka Karadzica 17, Podgorica, 81000"

@@ -4,7 +4,7 @@
     "services": "Usluge",
     "about": "O nama",
     "blog": "Blog",
-    "contact": "Kontaktirajte Nas"
+    "contact": "Kontakt"
   },
   "hero": {
     "title": "Dobrodošli u AQ Accounting",
@@ -38,7 +38,14 @@
   },
   "about": {
     "title": "O nama",
-    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum."
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.",
+    "mission": "Naša misija je da pružimo vrhunske računovodstvene usluge koje omogućavaju našim klijentima da se fokusiraju na ono što najbolje rade - razvoj svojih poslova.",
+    "stats": {
+      "experience": "Godina iskustva",
+      "clients": "Zadovoljnih klijenata",
+      "support": "Podrška",
+      "accuracy": "Tačnost"
+    }
   },
   "blog": {
     "title": "Najnovije Objave",
@@ -63,13 +70,34 @@
   },
   "contact": {
     "title": "Kontaktirajte nas",
+    "formTitle": "Pošaljite nam poruku",
+    "infoTitle": "Kontakt informacije",
     "fields": {
       "name": "Ime",
       "email": "Email",
       "phone": "Telefon (opciono)",
       "message": "Poruka"
     },
-    "submit": "Pošalji Poruku"
+    "submit": "Pošalji Poruku",
+    "info": {
+      "address": {
+        "title": "Adresa",
+        "value": "Bulevar Džordža Vašingtona 98, Podgorica"
+      },
+      "phone": {
+        "title": "Telefon",
+        "value": "+382 20 123 456"
+      },
+      "email": {
+        "title": "Email",
+        "value": "info@aq-accounting.me"
+      },
+      "hours": {
+        "title": "Radno vreme",
+        "value": "Pon - Pet: 08:00 - 16:00",
+        "weekend": "Vikend: Po dogovoru"
+      }
+    }
   },
   "footer": {
     "address": "Vuka Karadzica 17, Podgorica, 81000"
