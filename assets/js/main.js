@@ -230,3 +230,43 @@ function animateBgBlob() {
   requestAnimationFrame(animateBgBlob);
 }
 animateBgBlob();
+
+// ==== Mobile Menu Toggle ====
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileNav = document.getElementById('mobile-nav');
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+  
+  if (mobileMenuBtn && mobileNav) {
+    // Toggle mobile menu
+    mobileMenuBtn.addEventListener('click', function() {
+      mobileMenuBtn.classList.toggle('active');
+      mobileNav.classList.toggle('active');
+      
+      // Prevent body scroll when menu is open
+      if (mobileNav.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    });
+    
+    // Close menu when clicking on a link
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        mobileMenuBtn.classList.remove('active');
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+    
+    // Close menu when clicking outside
+    mobileNav.addEventListener('click', function(e) {
+      if (e.target === mobileNav) {
+        mobileMenuBtn.classList.remove('active');
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+});
