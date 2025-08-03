@@ -1,0 +1,1 @@
+{\n  "name": "aq-accounting",\n  "version": "1.0.0",\n  "scripts": {\n    "build": "postcss src/styles/tailwind.css -o dist/styles.css",\n    "dev": "postcss src/styles/tailwind.css -o dist/styles.css --watch"\n  },\n  "dependencies": {\n    "tailwindcss": "^2.2.19",\n    "postcss": "^8.4.6",\n    "autoprefixer": "^10.4.5"\n  }\n}
