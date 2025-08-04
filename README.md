@@ -15,7 +15,10 @@ A modern, responsive business accounting website built with Tailwind CSS featuri
 
 - **Tailwind CSS 3.4+** - Utility-first CSS framework
 - **PostCSS** - CSS processing pipeline
+- **Express.js** - Lightweight server framework with compression
+- **Node.js** - JavaScript runtime environment
 - **Autoprefixer** - Vendor prefix automation
+- **Service Worker** - Offline support and caching
 - **Custom Components** - Glassmorphism cards, navigation, hero sections
 
 ## 📦 Installation
@@ -36,10 +39,21 @@ A modern, responsive business accounting website built with Tailwind CSS featuri
    npm run build
    ```
 
-4. **Development mode (watch)**
+4. **Development mode (watch CSS)**
    ```bash
    npm run dev
    ```
+
+5. **Start Express server**
+   ```bash
+   npm run start
+   ```
+
+6. **Build and serve (production mode)**
+   ```bash
+   npm run serve
+   ```
+   Then open http://localhost:3000 in your browser.
 
 ## 🎨 Custom Theme
 
