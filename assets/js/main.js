@@ -171,6 +171,10 @@ function setLanguage(lang) {
 document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
 document.getElementById('lang-cg').addEventListener('click', () => setLanguage('cg'));
 
+// Add mobile language button listeners
+document.getElementById('lang-en-mobile').addEventListener('click', () => setLanguage('en'));
+document.getElementById('lang-cg-mobile').addEventListener('click', () => setLanguage('cg'));
+
 // ==== Mesh BG animacija ====
 const meshBg = document.querySelector('.mesh-bg-anim');
 function animateMeshBg() {
