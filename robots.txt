@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://aq-accounting.me/sitemap.xml
+
+# Disallow sensitive files
+Disallow: /assets/js/
+Disallow: /src/
+Disallow: /.git/
+Disallow: /node_modules/
+
+# Allow important assets
+Allow: /assets/css/
+Allow: /assets/images/
+Allow: /assets/favicons/
+
+# Crawl delay for respectful indexing
+Crawl-delay: 1

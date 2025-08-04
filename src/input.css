@@ -13,15 +13,74 @@
   html {
     scroll-behavior: smooth;
     font-family: 'Poppins', Arial, sans-serif;
+    /* Prevent layout shift from font loading */
+    font-display: swap;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* Enhanced smooth scrolling with custom timing */
+  * {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom smooth scroll behavior */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 6rem;
+    }
+  }
+  
+  /* Respect user's motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
   
   section[id] {
-    scroll-margin-top: 4rem;
+    scroll-margin-top: 6rem; /* Increased to account for fixed navbar */
   }
   
   body {
     @apply relative min-h-screen bg-transparent text-dark-700;
     background: none !important;
+    /* Performance optimizations */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* Image optimization for performance */
+  img {
+    /* Performance optimizations for images */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    /* Prevent layout shift */
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Specific optimizations for logo and hero images */
+  .logo-with-text img {
+    /* Logo specific optimizations */
+    width: auto;
+    height: 2rem; /* 32px equivalent to h-8 */
+    object-fit: contain;
+  }
+  
+  .hero-image img {
+    /* Hero image optimizations */
+    object-fit: cover;
+    aspect-ratio: 1;
+    /* Improve loading performance */
+    content-visibility: auto;
+    contain: layout style paint;
   }
 }
 
@@ -47,6 +106,10 @@
     transform: scale(1.05);
     transition: opacity 0.3s ease-out;
     will-change: transform, opacity;
+    /* GPU acceleration */
+    transform: translateZ(0) scale(1.05);
+    backface-visibility: hidden;
+    perspective: 1000px;
   }
   
   .bg-blob {
@@ -59,6 +122,10 @@
     width: 580px;
     height: 580px;
     max-width: none;
+    /* GPU acceleration */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
   }
   
   .blob1 {
@@ -75,33 +142,39 @@
     bottom: -10vh;
   }
   
-  @media (max-width: 1000px) {
+  /* MOBILE OPTIMIZATION: Reduce complexity but keep visual effects on mobile */
+  @media (max-width: 768px) {
+    .mesh-bg-anim {
+      opacity: 0.4 !important;
+      filter: blur(70px) brightness(1.05) !important;
+      transform: scale(1.05) !important;
+      display: block !important;
+    }
     .bg-blob {
-      width: 320px;
-      height: 320px;
-      filter: blur(10px) brightness(1.07);
+      display: none !important; /* Hide blobs on mobile */
+    }
+    .grain-bg {
+      opacity: 0.7 !important;
+      display: block !important; /* Force display on mobile */
+    }
+    
+    /* Dodane pomoćne klase za JS */
+    .mobile-mesh-visible {
+      display: block !important;
+      opacity: 0.4 !important;
+    }
+    .mobile-grain-visible {
+      display: block !important;
+      opacity: 0.7 !important;
     }
   }
   
-  .bg-cursor-blob-wrap {
-    @apply fixed inset-0 w-screen h-screen z-0 pointer-events-none overflow-visible;
-  }
-  
-  #bg-cursor-blob {
-    @apply absolute left-1/2 top-1/2 pointer-events-none z-0 select-none;
-    width: 610px;
-    height: 610px;
-    opacity: 0.46;
-    filter: blur(2000px) brightness(.99);
-    transform: translate(-50%, -50%);
-    transition: filter 0.3s, opacity 0.3s;
-  }
-  
-  @media (max-width: 600px) {
-    #bg-cursor-blob {
-      width: 60px;
-      height: 60px;
-      filter: blur(8px) brightness(1.05);
+  /* Desktop small screens optimization */
+  @media (min-width: 769px) and (max-width: 1000px) {
+    .bg-blob {
+      width: 320px;
+      height: 320px;
+      filter: blur(30px) brightness(1.07);
     }
   }
   
@@ -122,20 +195,34 @@
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   }
 
-  /* Mobile navigation styles - Hybrid approach (compact + floating + hidden text) */
+  /* Mobile navigation styles - Frosted glass with proper alignment */
   @media (max-width: 768px) {
-    .navbar {
-      @apply fixed top-4 left-4 right-4 z-50; /* Floating navbar */
-      border-radius: 20px; /* More rounded for modern look */
+    .nav-container {
+      @apply px-6 py-3 mx-6 rounded-full; /* Rounded like desktop */
+      @apply backdrop-blur-xl; /* Same blur as desktop */
+      background: rgba(255, 255, 255, 0.436); /* Same transparency as desktop */
+      border: 1px solid rgba(255,255,255,0.2); /* Same border as desktop */
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* Same shadow as desktop */
+      max-width: calc(100vw - 3rem); /* Prevent overflow on right side */
     }
     
+    /* Hide ALL desktop navigation elements */
+    .main-nav {
+      @apply hidden !important;
+    }
+    
+    .right-controls {
+      @apply hidden !important;
+    }
+    
+    /* Show only mobile menu button */
+    .mobile-menu-btn {
+      @apply flex !important;
+    }
+    
+    /* Simple layout: logo left, hamburger right - nothing else */
     .nav-container {
-      @apply px-4 py-2; /* Compact padding */
-      background: rgba(255, 255, 255, 0.95); /* More solid background */
-      backdrop-filter: blur(12px); /* Stronger blur */
-      border: 1px solid rgba(255,255,255,0.3);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15); /* Enhanced shadow */
-      border-radius: 20px; /* Match parent */
+      @apply flex items-center justify-between;
     }
     
     .logo-with-text {
@@ -143,60 +230,19 @@
     }
     
     .logo-text {
-      @apply hidden; /* Hide logo text completely on mobile */
-    }
-    
-    .main-nav {
-      @apply hidden;
-    }
-    
-    .right-controls {
-      @apply hidden; /* Hide all right controls on mobile */
-    }
-    
-    .mobile-menu-btn {
-      @apply relative z-50; /* Ensure hamburger is above everything */
-    }
-
-    /* Hide contact button on very small screens */
-    @media (max-width: 480px) {
-      .contact-button {
-        @apply hidden;
-      }
+      @apply text-lg font-bold;
     }
   }
 
-  /* Mobile menu button */
+  /* Mobile menu button - Simple positioning */
   .mobile-menu-btn {
     @apply flex flex-col justify-center items-center w-8 h-8 bg-transparent border-none cursor-pointer relative z-50;
     display: none;
-    order: 2; /* Position between logo and controls */
   }
 
   @media (max-width: 768px) {
     .mobile-menu-btn {
       display: flex;
-    }
-    
-    /* Reorder nav elements for mobile */
-    .nav-container {
-      @apply flex items-center justify-between;
-    }
-    
-    .logo-with-text {
-      order: 1;
-      flex: 0 0 auto;
-    }
-    
-    .mobile-menu-btn {
-      order: 2;
-      flex: 0 0 auto;
-      margin: 0 auto;
-    }
-    
-    .right-controls {
-      order: 3;
-      flex: 0 0 auto;
     }
   }
 
@@ -228,20 +274,20 @@
     transform: rotate(-45deg) translate(7px, -6px);
   }
 
-  /* Mobile navigation menu */
+  /* Mobile navigation menu - Frosted glass container with card layout */
   .mobile-nav {
-    @apply fixed top-0 left-0 w-full h-screen z-40 flex flex-col items-center justify-center gap-8;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(20px); /* Enhanced blur for floating design */
+    @apply fixed top-0 left-0 w-full h-screen z-40 flex items-center justify-center;
+    background: rgba(0, 0, 0, 0.15); /* Very subtle dark background */
+    backdrop-filter: blur(4px); /* Light background blur */
     transform: translateY(-100%);
-    transition: transform 0.25s ease-out;
+    transition: transform 0.3s ease-out;
     display: none;
+    padding: 2rem;
   }
 
   @media (max-width: 768px) {
     .mobile-nav {
       display: flex;
-      padding-top: 100px; /* Account for floating navbar space */
     }
   }
 
@@ -249,35 +295,118 @@
     transform: translateY(0);
   }
 
+  /* Frosted glass menu container */
+  .mobile-nav-container {
+    @apply backdrop-blur-xl rounded-3xl shadow-nav relative;
+    @apply flex flex-col items-center justify-center gap-6 p-8;
+    @apply max-w-sm w-full mx-auto;
+    background: rgba(255, 255, 255, 0.436); /* Same as other containers */
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    transform: scale(0.9) translateY(20px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .mobile-nav.active .mobile-nav-container {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+
+  /* Card-style navigation links */
   .mobile-nav-link {
-    @apply text-2xl font-medium text-gray-800 no-underline transition-colors duration-200;
-    padding: 1rem 2rem;
-    border-radius: 12px;
-    width: 200px;
-    text-align: center;
-    border: 2px solid transparent;
+    @apply text-xl font-medium text-gray-800 no-underline transition-all duration-300;
+    @apply backdrop-blur-lg rounded-2xl px-6 py-4 w-full text-center;
+    @apply border-2 border-transparent;
+    background: rgba(255, 255, 255, 0.5); /* More transparent */
+    box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.08); /* Lighter shadow */
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease-out;
+  }
+
+  /* Staggered fade-in animation for links */
+  .mobile-nav.active .mobile-nav-link:nth-child(1) {
+    transition-delay: 0.1s;
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .mobile-nav.active .mobile-nav-link:nth-child(2) {
+    transition-delay: 0.15s;
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .mobile-nav.active .mobile-nav-link:nth-child(3) {
+    transition-delay: 0.2s;
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .mobile-nav.active .mobile-nav-link:nth-child(4) {
+    transition-delay: 0.25s;
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .mobile-nav.active .mobile-nav-link:nth-child(5) {
+    transition-delay: 0.3s;
+    transform: translateY(0);
+    opacity: 1;
   }
 
   .mobile-nav-link:hover {
     @apply text-primary-500;
-    background: rgba(15, 116, 188, 0.1);
-    border-color: rgba(15, 116, 188, 0.2);
+    background: rgba(15, 116, 188, 0.15);
+    border-color: rgba(15, 116, 188, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px 0 rgba(15, 116, 188, 0.2);
+  }
+
+  /* Special blue contact button in mobile menu */
+  .mobile-contact-btn {
+    @apply text-white font-semibold;
+    background: rgba(15, 116, 188, 0.8) !important; /* Blue like desktop */
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 8px 32px 0 rgba(15, 116, 188, 0.3) !important;
+  }
+
+  .mobile-contact-btn:hover {
+    @apply text-white !important;
+    background: rgba(36, 169, 225, 0.9) !important; /* Blue hover like desktop */
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0 8px 32px 0 rgba(36, 169, 225, 0.4) !important;
   }
   
-  /* Mobile language buttons */
+  /* Mobile language buttons container */
   .mobile-lang-buttons {
-    @apply flex gap-4 mt-4 pt-4 border-t border-gray-200;
+    @apply flex gap-3 mt-6 pt-6 border-t border-white/20 w-full justify-center;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease-out;
+  }
+  
+  .mobile-nav.active .mobile-lang-buttons {
+    transition-delay: 0.35s;
+    transform: translateY(0);
+    opacity: 1;
   }
   
   .mobile-lang-button {
-    @apply flex items-center gap-2 px-4 py-2 text-base font-medium text-gray-700;
-    @apply border border-gray-200 rounded-lg transition-all duration-200;
-    background: rgba(255, 255, 255, 0.8);
+    @apply flex items-center gap-2 px-4 py-3 text-base font-medium text-gray-700;
+    @apply backdrop-blur-lg rounded-xl transition-all duration-300;
+    @apply border border-white/30;
+    background: rgba(255, 255, 255, 0.6); /* More transparent */
+    box-shadow: 0 4px 12px 0 rgba(31, 38, 135, 0.08); /* Lighter shadow */
   }
   
   .mobile-lang-button:hover {
-    @apply text-primary-500 border-primary-500;
-    background: rgba(15, 116, 188, 0.1);
+    @apply text-primary-500;
+    background: rgba(15, 116, 188, 0.15);
+    border-color: rgba(15, 116, 188, 0.3);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px 0 rgba(15, 116, 188, 0.15);
   }
   
   .nav-link {
@@ -360,12 +489,15 @@
     background: rgba(255, 255, 255, 0.436);
     border: 1px solid rgba(255,255,255,0.2);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    /* Prevent layout shift optimizations */
+    contain: layout style;
+    will-change: contents;
   }
 
   /* Mobile glass container optimization */
   @media (max-width: 768px) {
     .hero-glass-container {
-      @apply px-6 py-12 mx-4; /* Reduced padding and margins */
+      @apply px-6 py-12 mx-6; /* Increased margins to prevent overflow */
       @apply min-h-[400px]; /* Smaller minimum height */
     }
   }
@@ -456,7 +588,24 @@
   
   .img-rounded {
     @apply w-full rounded-2xl shadow-hero object-cover;
-    max-width: 480px;
+    /* Optimized max-width for actual display size */
+    max-width: 350px; /* Reduced from 480px to match actual display */
+    /* Performance optimizations */
+    contain: layout style;
+    content-visibility: auto;
+  }
+  
+  /* Mobile image optimization */
+  @media (max-width: 768px) {
+    .img-rounded {
+      max-width: 280px; /* Smaller on mobile */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .img-rounded {
+      max-width: 250px; /* Even smaller on small mobile */
+    }
   }
   
   .hero-content {
@@ -465,6 +614,11 @@
   
   .hero-title {
     @apply text-5xl font-bold font-poppins text-dark-700 leading-tight;
+    /* Prevent layout shift from font loading */
+    font-display: swap;
+    contain: layout style;
+    /* Reserve space to prevent shift */
+    min-height: 1.2em;
   }
 
   /* Mobile typography optimization */
@@ -545,6 +699,26 @@
     
     .hero-content {
       @apply items-center;
+    }
+  }
+
+  /* Mobile text alignment optimization - keep position centered but text left-aligned */
+  @media (max-width: 768px) {
+    .hero-content {
+      @apply items-center text-left;
+      max-width: 90%;
+    }
+    
+    .hero-title {
+      @apply text-left w-full;
+    }
+    
+    .hero-desc {
+      @apply text-left w-full;
+    }
+    
+    .hero-actions {
+      @apply justify-start w-full;
     }
   }
 
@@ -664,6 +838,37 @@
     @apply w-10 h-10 block mx-auto mb-5 object-contain transition-all duration-200;
   }
   
+  /* Optimized video icons for better performance */
+  .service-icon-video {
+    @apply w-10 h-10 block mx-auto mb-5 object-contain transition-all duration-200;
+    /* Ensure video plays smoothly */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    /* Optimize for mobile performance */
+    will-change: auto;
+    display: block !important;
+  }
+  
+  /* Ensure service icons are visible on mobile */
+  @media (max-width: 768px) {
+    .service-icon-video {
+      @apply w-10 h-10 block mx-auto mb-5;
+      display: block !important;
+      opacity: 1 !important;
+    }
+    
+    .service-card .icon {
+      display: block !important;
+    }
+  }
+  
+  /* Mobile optimization for video icons */
+  @media (max-width: 768px) {
+    .service-icon-video {
+      @apply w-8 h-8; /* Smaller on mobile for better performance */
+    }
+  }
+  
   .service-card:hover .icon {
     @apply text-blue-400;
     filter: drop-shadow(0 2px 12px #93deff55);
@@ -749,61 +954,6 @@
    UTILITIES LAYER - Custom utility classes
    ================================================ */
 @layer utilities {
-  .bg-glass {
-    @apply backdrop-blur-lg;
-    background: rgba(255,255,255,0.25);
-  }
-  
-  .bg-glass-light {
-    @apply backdrop-blur-md;
-    background: rgba(255,255,255,0.15);
-  }
-  
-  .bg-glass-strong {
-    @apply backdrop-blur-xl;
-    background: rgba(255,255,255,0.35);
-  }
-  
-  .text-gradient {
-    @apply bg-gradient-to-r from-primary-500 to-secondary-400 bg-clip-text text-transparent;
-  }
-  
-  .shadow-glass-sm {
-    box-shadow: 0 4px 16px 0 rgba(36, 169, 225, 0.08), 0 1px 4px 0 rgba(36, 169, 225, 0.04);
-  }
-  
-  .border-glass {
-    @apply border backdrop-blur-sm;
-    border-color: rgba(255,255,255,0.3);
-  }
-  
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-  
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-  }
-  
-  .blur-glass {
-    filter: blur(8px);
-    backdrop-filter: blur(8px);
-  }
-  
-  .opacity-46 {
-    opacity: 0.46;
-  }
-  
-  .opacity-11 {
-    opacity: 0.11;
-  }
-  
-  /* Responsive utilities for specific breakpoints */
-  .container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
-  
   /* Performance optimization utilities */
   .will-change-transform {
     will-change: transform;
@@ -847,16 +997,23 @@
 .typing-container {
   @apply relative;
   min-height: 120px; /* Fixed height to prevent layout shifts */
+  /* Predefine dimensions to prevent font-loading shifts */
+  contain: layout style;
+  will-change: contents;
 }
 
 .typing-line {
   @apply block;
   margin-bottom: 0.25rem;
+  /* Reserve space to prevent layout shift */
+  min-height: 1.2em;
 }
 
 .typing-word {
   @apply inline-block mr-3;
   min-width: 20px; /* Reserve minimum space for each word */
+  /* Prevent font swap layout shift */
+  font-display: swap;
 }
 
 .typing-word.active {
@@ -882,7 +1039,6 @@
 @media print {
   .mesh-bg-anim,
   .bg-blob,
-  .bg-cursor-blob-wrap,
   .grain-bg {
     @apply hidden;
   }
